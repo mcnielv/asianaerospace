@@ -1,0 +1,103 @@
+﻿body {
+ font-family: tahoma;
+ text-align: left;
+}
+
+/* MENU */
+
+#nav {
+ background: #e5e5e5;
+ float: left;
+ margin: 0; padding: 0;
+ /*border: 0px solid white;
+ border-bottom: none;*/
+ font-size: 10px;
+ font-weight:bolder;
+}
+
+#nav li a, #nav li {
+ float: left;
+}
+
+#nav li {
+ list-style: none;
+ position: relative;
+}
+
+#nav li a 
+{
+ /*nav height and width*/
+ padding: 5px 20px;
+ text-decoration: none;
+ /* menu text color */
+ color: black;
+ /*menu background color IE*/
+ background: #e9e9e9;
+ /*menu background color FF*/
+ background: -moz-linear(top, black, #3c3c3c 1px, #e9e9e9 12px);
+ /*menu background color GChrome*/
+ background: -webkit(linear, left top, left 25, from(black), color-stop(4%, #e9e9e9), to(#292929));
+ border-bottom: 0;
+}
+
+#nav li a:hover {
+ background: #096bb4;
+ color: White;
+ background: -moz-linear-gradient(top, #11032e, #2a0d65);
+ background: -webkit-gradient(linear, left top, left bottom, from(#11032e), to(#2a0d65));
+ border-bottom:3px solid #545454;
+ border-top:3px solid #545454;
+}
+
+
+e
+/* Submenu */
+
+.hasChildren {
+	position: absolute;
+	/*below is the small square on lower right corner of navigation size when tab has children*/
+	width: 10px; height: 10px;
+	background: red;
+	right : 0;
+	bottom: 0;
+}
+
+#nav li ul {
+ display: none;
+ position: absolute;
+ left: 0;
+ top: 100%;
+ padding: 0; margin: 0;
+ z-index: 10000;
+}
+
+#nav li:hover > ul {
+ display: block;
+}
+
+#nav li ul li, #nav li ul li a {
+ float: none;
+}
+
+#nav li ul li {
+ _display: inline; /* for IE6 */
+}
+
+#nav li ul li a {
+ width: 150px;
+ display: block;
+}
+
+/* SUBSUB Menu */
+
+#nav li ul li ul {
+ display: none;
+}
+
+#nav li ul li:hover ul {
+ left: 100%;
+ top: 0;
+}
+
+
+#nav li ul 

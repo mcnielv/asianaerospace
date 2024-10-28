@@ -1,0 +1,291 @@
+﻿@model AAC.Web.Model.Scheduler.CalendarViewModel
+@{
+    ViewBag.Title = "Calendar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content" style="width:80%;float:none; margin-left:auto; margin-right: auto;">
+    <!--START CALENDAR HERE-->
+    <div id="calendar" style=""></div>
+</div>
+
+<!--MODAL POPUP HERE-->
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create / Modify Schedule</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Title :</span></div>
+                            <div class="col-sm-pull-5">
+                                <input type="text" id="txtID" name="txtID" value="0"  style="display:none;" />
+                                <input type="text" id="txtTitle" name="txtTitle" class="form-control" style="width:350px;" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Aircraft :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlAircrafts" style="width:200px;">
+                                    <option value="0">Select Aircraft</option>
+                                    @if ( Model.Aircrafts != null )
+                                    {
+                                        foreach ( var aircraft in Model.Aircrafts )
+                                        {
+                                            <option value="@aircraft.ID">@aircraft.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Reg # :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlRegistrations" style="width:200px;">
+                                    <option value="0">Select Registration #</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-pull-1"><span class="txtbold" style="margin:18px;">Flight Duration</span></div>
+                            <div class="col-sm-pull-8">
+                                <table style="width:80%; border:0;margin-left:100px;">
+                                    <tr>
+                                        <td style="width:50%;">
+                                            <span class="txtdarkgreenbold10">Start :</span>
+                                            <input type="text" id="txtStart" name="txtStart" class="form-control" style="width:160px;" />
+                                        </td>
+                                        <td>
+                                            <span class="txtdarkgreenbold10">End :</span>
+                                            <input type="text" id="txtEnd" name="txtEnd" class="form-control" style="width:160px;" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-pull-1"><span class="txtbold" style="margin:18px;">Waiting Time</span></div>
+                            <div class="col-sm-pull-8">
+                                <table style="width:80%; border:0;margin-left:100px;">
+                                    <tr>
+                                        <td style="width:50%;">
+                                            <span class="txtdarkgreenbold10">Start :</span>
+                                            <input type="text" id="txtWaitingStart" name="txtWaitingStart" class="form-control" style="width:160px;" />
+                                        </td>
+                                        <td>
+                                            <span class="txtdarkgreenbold10">End :</span>
+                                            <input type="text" id="txtWaitingEnd" name="txtWaitingEnd" class="form-control" style="width:160px;" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Route(start) :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlRouteStart" style="width:200px;">
+                                    <option value="0">Select Route(start)</option>
+                                    @if ( Model.Destinations != null )
+                                    {
+                                        foreach ( var destination in Model.Destinations )
+                                        {
+                                            <option value="@destination.ID">@destination.Name</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Destination :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlRouteDestination" style="width:200px;">
+                                    <option value="0">Select Destination</option>
+                                    @if ( Model.Destinations != null )
+                                    {
+                                        foreach ( var destination in Model.Destinations )
+                                        {
+                                            <option value="@destination.ID">@destination.Name</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Route(end) :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlRouteEnd" style="width:200px;">
+                                    <option value="0">Select Route(end)</option>
+                                    @if ( Model.Destinations != null )
+                                    {
+                                        foreach ( var destination in Model.Destinations )
+                                        {
+                                            <option value="@destination.ID">@destination.Name</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Pilot :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlPilot" style="width:200px;">
+                                    <option value="0">Select Pilot</option>
+                                    @if ( Model.Pilots != null )
+                                    {
+                                        foreach ( var pilot in Model.Pilots )
+                                        {
+                                            <option value="@pilot.ID">@pilot.FirstName @pilot.LastName</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Co-Pilot :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlCoPilot" style="width:200px;">
+                                    <option value="0">Select Co-Pilot</option>
+                                    @if ( Model.Pilots != null )
+                                    {
+                                        foreach ( var copilot in Model.Pilots )
+                                        {
+                                            <option value="@copilot.ID">@copilot.FirstName @copilot.LastName</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:3px; margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Crew(s) :</span></div>
+                            <div class="col-sm-pull-5">
+                                <select class="form-control" id="ddlcrews" style="width:350px;" multiple="multiple">
+                                    @if ( Model.Crews != null )
+                                    {
+                                        foreach ( var crew in Model.Crews )
+                                        {
+                                            <option value="@crew.ID">@crew.FirstName @crew.LastName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Notes :</span></div>
+                            <div class="col-sm-pull-5">
+                                <textarea class="form-control" style="width:350px;" rows="4" id="txtNotes"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Passenger(s) :</span></div>
+                            <div class="col-sm-pull-5">
+                                <textarea class="form-control" style="width:350px;" rows="4" id="txtPassenger"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Flight Info :</span></div>
+                            <div class="col-sm-pull-5">
+                                <textarea class="form-control" style="width:350px;" rows="4" id="txtFlightInfo"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">Technical Stops :</span></div>
+                            <div class="col-sm-pull-5">
+                                <textarea class="form-control" style="width:350px;" rows="4" id="txtTechstops"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px;">
+                            <div class="col-sm-5" style="width:30%;"><span class="txtbold">ETC :</span></div>
+                            <div class="col-sm-pull-5">
+                                <textarea class="form-control" style="width:350px;" rows="4" id="txtEtc"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!--data-dismiss="modal"-->
+                    <button type="button" class="btn btn-default" id="btnSave" >Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+</div>
+
+
+@section scripts{
+@Scripts.Render( "~/bundles/fullcalendar" )
+@Scripts.Render( "~/bundles/jdtpicker" )
+@Scripts.Render( "~/bundles/schedulecontroller" )
+<script>
+$(document).ready(function () {
+    //$("#myModal").modal();
+    var dateNow = new Date();
+    var acchange = '@Url.Action( "GetRegistrations", "Scheduler")';
+    calendarcontrolevents.ddlaircraftOnChange(acchange);
+    calendarcontrolevents.ddlcrewsOnChange();
+    calendarsetup.textboxdatetime(dateNow);
+
+    var jsonurl = '@Url.Action( "GetSchedule", "Scheduler")';
+    var detailurl = '@Url.Action( "GetDetail", "Scheduler" )';
+    var updateurl = '@Url.Action( "Update", "Scheduler" )';
+    calendarsetup.createcalendar(dateNow, jsonurl, detailurl, acchange, updateurl);
+
+  
+    var createurl = '@Url.Action( "Create", "Scheduler" )';
+    calendarcontrolevents.savedata(createurl, updateurl);
+});
+
+</script>
+}
+
+
+@section styles{
+    @*@Styles.Render( "~/Content/fullcalendar" )*@
+    <link href='@Url.Content("~/Content/jquery.datetimepicker.css")' rel='stylesheet' />
+    <link href='@Url.Content("~/fullcalendar/fullcalendar.css")' rel='stylesheet' />
+    <link href='@Url.Content("~/fullcalendar/fullcalendar.print.css")' rel='stylesheet' media='print' />
+    <style>
+        body {
+            /*margin: 40px 10px;*/
+            padding: 0;
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+            font-size: 14px;
+            background-color: #d5e4ff;
+            background-image: none;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        h2 {
+            color: #000000;
+        }
+
+        .custom-date-style {
+            background-color: red !important;
+        }
+
+        .input{	
+        }
+        .input-wide{
+            width: 500px;
+        }
+    </style>
+}

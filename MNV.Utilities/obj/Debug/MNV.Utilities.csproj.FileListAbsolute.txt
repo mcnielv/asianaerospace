@@ -1,0 +1,5 @@
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\MNV.Utilities\bin\Debug\MNV.Utilities.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\MNV.Utilities\bin\Debug\MNV.Utilities.pdb
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\MNV.Utilities\obj\Debug\MNV.Utilities.csprojResolveAssemblyReference.cache
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\MNV.Utilities\obj\Debug\MNV.Utilities.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\MNV.Utilities\obj\Debug\MNV.Utilities.pdb

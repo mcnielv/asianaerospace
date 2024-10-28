@@ -1,0 +1,10 @@
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\AAC.ICore.dll.config
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\AAC.ICore.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\AAC.ICore.pdb
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\EntityFramework.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\EntityFramework.SqlServer.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\EntityFramework.xml
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\bin\Debug\EntityFramework.SqlServer.xml
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\obj\Debug\AAC.ICore.csprojResolveAssemblyReference.cache
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\obj\Debug\AAC.ICore.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.ICore\obj\Debug\AAC.ICore.pdb

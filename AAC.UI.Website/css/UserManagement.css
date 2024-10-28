@@ -1,0 +1,35 @@
+﻿.searchBox
+{
+	float:left; 
+	width:35%;
+	background-color:#999999; 
+	border-color: Black;
+	border-style:solid;
+	border-width:1px;
+}
+
+.detailBox
+{
+	float:left; 
+	width:50%;
+	background-color:#999999; 
+	border-color: Black;
+	border-style:solid;
+	border-width:1px;
+}
+
+.usergridBox
+{
+	float:left; 
+	width:38%;
+	/*background-color:#999999; 
+	border-color: Black;
+	border-style:solid;
+	border-width:1px;*/
+}
+
+.usergridBox a
+{
+	font-weight:bolder;
+	color:#999999;
+}

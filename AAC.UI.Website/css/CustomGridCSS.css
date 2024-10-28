@@ -1,0 +1,48 @@
+﻿.tblBorder
+{
+	border:solid 1px #000000;	
+}
+
+.tdHeader
+{
+	border:solid 1px #000000;	
+	font: normal normal bold 14px Verdana;
+	background-color:#6b8dc7;
+}
+
+
+.tdData
+{
+	border:solid 1px #dcdbdb;	
+	font: normal normal normal 12px Verdana;
+	background-color:#f1f0f0;
+}
+
+.tdDataAltername
+{
+	border:solid 1px #dcdbdb;		
+	font: normal normal normal 12px Verdana;
+	background-color:#d0d0d0;
+}
+
+.tdFooter
+{
+	border:solid 1px #000000;		
+	font: normal normal bold 10px Verdana;
+	background-color:#e9e9e9;	
+}
+
+.tdFooter a{color:#121211; text-decoration:none;font-weight:normal;}
+.tdFooter a:hover{color:#121211;text-decoration:none;font-weight:bold;}
+.tdFooter a:visited{color:#121211;text-decoration:none;font-weight:normal;}
+.tdFooter a:active{color:#121211;text-decoration:none;font-weight:bold;}
+
+.tdData a{color:#121211; text-decoration:none;font-weight:normal;}
+.tdData a:hover{color:#121211;text-decoration:none;font-weight:bold;}
+.tdData a:visited{color:#121211;text-decoration:none;font-weight:normal;}
+.tdData a:active{color:#121211;text-decoration:none;font-weight:bold;}
+
+.tdDataAltername a{color:#121211; text-decoration:none;font-weight:normal;}
+.tdDataAltername a:hover{color:#121211;text-decoration:none;font-weight:bold;}
+.tdDataAltername a:visited{color:#121211;text-decoration:none;font-weight:normal;}
+.tdDataAltername a:active{color:#121211;text-decoration:none;font-weight:bold;}

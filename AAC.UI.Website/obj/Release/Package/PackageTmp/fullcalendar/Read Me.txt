@@ -1,0 +1,3 @@
+http://fullcalendar.io/docs/
+http://stackoverflow.com/questions/12340437/fullcalendar-events-not-showing-even-though-correct-json-feed
+http://www.codeproject.com/Articles/638674/Full-calendar-A-complete-web-diary-system-for-jQue

@@ -1,0 +1,122 @@
+﻿.btnDone { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/DONE.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnDone32x32 { 
+	height: 33px;
+	width: 97px;
+	background: url(../images/pagination/Submit.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnSubmitNew { 
+	height: 43px;
+	width: 132px;
+	background: url(../images/pagination/Submit.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnFirst { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/FIRST.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnPrevPage { font-size:x-small;  font-weight:bold;
+	height: 43px;
+	width: 154px;
+	background: url(../images/pagination/PreviousPage.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnPrev { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/PREV.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnLast { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/LAST.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnNextPage { font-size:x-small;  font-weight:bold;
+	height: 43px;
+	width: 154px;
+	background: url(../images/pagination/NextPage.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnNext { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/NEXT.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnGO { font-size:x-small;  font-weight:bold;
+	height: 22px;
+	width: 43px;
+	background: url(../images/pagination/GO.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnGODisabled { font-size:x-small;  font-weight:bold;
+	height: 22px;
+	width: 43px;
+	background: url(../images/pagination/disbaledGO.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnFirstDisbaled { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/disbaledFIRST.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnPrevDisbaled { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/disbaledPREV.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnLastDisbaled { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/disbaledLAST.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+
+.btnNextDisbaled { font-size:x-small;  font-weight:bold;
+	height: 21px;
+	width: 21px;
+	background: url(../images/pagination/disbaledNEXT.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnReset
+{
+	height: 32px;
+	width: 32px;
+	background: url(../images/Reset2Blue.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.pagingTable
+{
+	background-color:#6b8dc7;
+	height:10px;
+	/*border-style:solid;
+	border: 1px;	
+	border-color:Black;	*/
+}

@@ -1,0 +1,128 @@
+﻿@model AAC.Web.Model.Account.LoginModel
+@{ Layout = null;}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Asian Aerospace Flight Scheduling & Monitoring System</title>
+    <link rel="shortcut icon" href="@Url.Content("~/images/pcpBrowserICON/favicon.ico")" />
+    <link rel="icon" type="image/gif" href="@Url.Content("~/images/pcpBrowserICON/animated_favicon1.gif")" />
+    <link href="@Url.Content("~/css/login-box.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/ems.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render( "~/Content/css" )
+    @Styles.Render( "~/Content/jqalertcss" )
+
+</head>
+<body style="background: #77aaef;">
+    <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        @using ( Html.BeginForm("Login","Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {id="frmLogin"} ) )
+        {
+            @Html.AntiForgeryToken()
+            <div id="login-box">
+                <br />
+                <br /><br />
+                <br />
+                    <div style="border-color:#254d92; border: solid; align-content:center;background-color:#fff; border-color:Black; ">
+                        <div ><img alt="" style="padding-left:65px;" src="@Url.Content( "~/images/Logo.jpg" )" /></div>
+                    </div>
+                    @*<table width="100%" border="2" align="center" cellpadding="0" cellspacing="1" style="border-color:#254d92;">
+                        <tr>
+                            <td align="center" style="background-color:#2e5a9f; border-color:Black;">
+                                <img alt="" src="@Url.Content( "~/images/Logo.jpg" )" />
+                            </td>
+                        </tr>
+                    </table>*@
+                    <br />
+                    <br />
+
+                    <span id="sMessage"><strong>&nbsp;</strong></span>
+                    <div>
+                        <div id="login-box-name" style="margin-top:20px;"><strong>Username:</strong></div>
+                        <div id="login-box-field" style="margin-top:20px;">
+                            @Html.TextBoxFor( m => m.Username, new { @id = "txtUsername", @class = "form-login", @style = "width:231px; height:9px; font-size:inherit;", @maxlength = "10" } )
+                            @*<input type="text" id="txtUsername" class="form-login" style="width:231px; height:9px; font-size:inherit;" maxlength="10" />*@
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                        <div id="login-box-name"><strong>Password:</strong></div>
+                        <div id="login-box-field">
+                            @Html.PasswordFor( m => m.Password, new { @id = "txtPassword", @class = "form-login", @style = "width:231px; height:9px; font-size:inherit;", @maxlength = "10" } )
+                            @*<input type="password" id="txtPassword" class="form-login" style="width:231px; height:9px; font-size:inherit;" maxlength="10" />*@
+                        </div>
+                    </div>
+                    <table width="88%" border="0" align="center" cellpadding="0" cellspacing="1">
+                        <tr>
+                            <td align="right">
+                                <input type="submit" name="btnLogin" id="btnLogin" class="loginBTN" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td align="center" class="txtorangebold">
+                                Powered by: MV Solutions &#169; 2016
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+        }
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render( "~/bundles/bootstrap" );*@
+    @Scripts.Render( "~/bundles/jqalert" )
+    <script src="@Url.Content("~/Scripts/Common.js")"></script>"
+    <script type="text/javascript">
+        var msg = '@Request.Params["msg"]';
+        $('#sMessage').html('<strong>&nbsp;' + msg + '</strong>');
+
+        jQuery.fn.extend({
+            IsValid: function () {
+                var username = $.trim( $("#txtUsername").val() );
+                    //document.getElementById('txtUsrname').value;
+                var password = $.trim( $("#txtPassword").val() );
+                    //document.getElementById('txtPassword').value;
+                var msg = '';
+
+                if (username == '') {
+                    msg += 'Username is required <br />';
+                }
+                if (password == '') {
+                    msg += 'Password is required. <br />';
+                }
+
+                if (msg == '') {
+                    return true;
+                }
+                else {
+                    $.alert({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: msg
+                    });
+                    return false;
+                }
+            }
+        });
+        $("#frmLogin").submit(function (e) {            
+            return $(e).IsValid();
+            e.preventDefault();
+        });
+       
+        window.onload = function () {
+            var txtBox = document.getElementById("txtUsername");
+         
+            if (txtBox != null) {
+                txtBox.focus();
+            }
+        };
+    </script>
+</body>
+</html>

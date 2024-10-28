@@ -1,0 +1,161 @@
+﻿@model AAC.Web.Model.User.UserViewModel
+@{
+    ViewBag.Title = "Asian Aerospace Flight Scheduling & Monitoring System | Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel-group" style="width:50%; float:none; margin-left:auto; margin-right: auto;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="font-weight:bolder; font-size:12px;">Profile Information</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;" ><span class="txtbold">User Name :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.Username" id="txtUsername" name="txtUsername" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Password :</span></div>
+                    <div class="col-sm-pull-5"><input type="password" value="@Model.Password" id="txtPassword" name="txtPassword" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">First Name :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.FirstName" id="txtFirstname" name="txtFirstname" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Middle Name :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.MiddleName" id="txtMiddlename" name="txtMiddlename" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Last Name :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.LastName" id="txtLastname" name="txtLastname" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Address :</span></div>
+                    <div class="col-sm-pull-5"><textarea style="height:129px;width:410px;" id="txtAddress" class="form-control" rows="5" >@Model.Address</textarea></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Contact :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.Phone" id="txtPhone" name="txtPhone" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">Email :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.Email" id="txtEmail" name="txtEmail" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">SSS :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.SSS" id="txtSSS" name="txtSSS" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-5" style="width:30%;"><span class="txtbold">TIN :</span></div>
+                    <div class="col-sm-pull-5"><input type="text" value="@Model.TIN" id="txtTIN" name="txtTIN" class="form-control" style="width:410px;" /></div>
+                </div>
+                <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                    <div class="col-sm-pull-5">
+                        <div align="left">&nbsp;&nbsp;&nbsp;
+                            <input type="button" id="btnSave" class="btnSave" />
+                            &nbsp;
+                            <input type="button" id="btnDelete" class="btnDelete" style="display:none;" />
+                            &nbsp;
+                            <input type="button" id="btnCancel" class="btnCancel" style="display:none;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+          
+            $('#btnSave').click(function () {
+              
+                //validate data
+                //if (confirm("Update profile information?")) { }
+                var username = $.trim($('#txtUsername').val());
+                var password = $.trim($('#txtPassword').val());         
+                var fn = $.trim($('#txtFirstname').val());
+                var ln = $.trim($('#txtLastname').val());              
+                var mid = $.trim($('#txtMiddlename').val());
+                var address = $.trim($('#txtAddress').val());             
+                var phone = $.trim($('#txtPhone').val());
+                var email = $.trim($('#txtEmail').val());
+                var sss = $.trim($('#txtSSS').val());                
+                var tin = $.trim($('#txtTIN').val());
+                var id = '@Model.ID';
+            
+                var msg = '';
+                if(username=='')
+                {
+                    msg += 'Username is required. <br />';
+                }
+                if (fn == '') {
+                    msg += 'First name is required. <br />';
+                }
+                if (ln == '') {
+                    msg += 'Last name is required. <br />';
+                }
+                if (mid == '') {
+                    msg += 'Middle name is required. <br />';
+                }
+                if (address == '') {
+                    msg += 'Address is required. <br />';
+                }
+                if (phone == '') {
+                    msg += 'Phone or contact # is required. <br />';
+                }
+                if (email == '') {
+                    msg += 'Email address is required. <br />';
+                }
+                if (sss == '') {
+                    msg += 'SSS # is required. <br />';
+                }
+                if (tin == '') {
+                    msg += 'TIN # is required. <br />';
+                }
+           
+                if (msg == '') {
+                    $.confirm({
+                        title: 'AAC Data Monitoring',
+                        confirmButton: 'Yes',
+                        cancelButton: 'No',
+                        content: 'Do you want to update your profile?',
+                        confirm: function () {
+                            var userview =
+                            {
+                                ID: id,
+                                Username: username,
+                                FirstName: fn,
+                                LastName: ln,
+                                MiddleName: mid,
+                                Address: address,
+                                Phone: phone,
+                                Email: email,
+                                SSS: sss,
+                                TIN: tin,
+                                Password: password
+                            };
+                            $.post('@Url.Action("Update","Profile")', { "model": userview }, function (data) {
+                                var dataMsg = data.Message;
+                                $('#lblUser').text(ln + ', ' + fn);
+                                $.alert({
+                                    closeIcon: true,
+                                    title: 'AAC Data Monitoring',
+                                    content: dataMsg
+                                });
+                            }, 'json');
+                        }
+                    });
+                }
+                else {
+                    $.alert({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: msg
+                    });
+                }
+            });
+
+        });
+    </script>  
+}

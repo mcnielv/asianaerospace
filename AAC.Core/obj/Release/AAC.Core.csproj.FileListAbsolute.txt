@@ -1,0 +1,12 @@
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\AAC.Core.dll.config
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\AAC.Core.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\AAC.Core.pdb
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\AAC.Data.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\EntityFramework.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\EntityFramework.SqlServer.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\AAC.Data.pdb
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\EntityFramework.xml
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\bin\Release\EntityFramework.SqlServer.xml
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\obj\Release\AAC.Core.csprojResolveAssemblyReference.cache
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\obj\Release\AAC.Core.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Core\obj\Release\AAC.Core.pdb

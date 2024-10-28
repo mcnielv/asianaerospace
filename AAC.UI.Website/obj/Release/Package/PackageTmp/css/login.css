@@ -1,0 +1,131 @@
+﻿body 
+{
+	background-color:#c7c6d8;margin:0 0 0 0;font-family: Verdana, Geneva, Arial, helvetica, sans-serif;
+	/* width:1280px;*/
+}
+.expediaLogo
+{
+	background-image: url(../images/login/login_expedia_logo.jpg);
+	background-repeat: no-repeat;	
+	width:350px;
+	height:94px;
+}
+.trTop
+{
+	background-color: #3b5998;	
+	height: 94px;
+}
+.trOrange
+{
+	/*background-color:#db7523;*/
+	width:13px;
+	height:6px;	
+	background-image: url(../images/login/login_orangeline.jpg);
+	background-repeat: repeat-x;
+}
+.tdRegister
+{	
+	background-image: url(../images/login/login_image.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	width:1280px;
+	height:499px;
+}
+.trRegister
+{
+background-color:#d8dae7;	
+}
+
+.labelText
+{
+	color:#FFFFFF;
+	font-size:11px;
+	font-weight:bold;
+	font-family: Tahoma;	
+}
+
+.btnLogin
+{	
+	background-image: url(../images/login/btnLogin.jpg);
+	background-repeat: no-repeat;
+	border:0px;	
+	width:58px;
+	height:24px;
+	cursor:pointer;
+}
+
+.btnSignup
+{	
+	background-image: url(../images/login/btnSignup.png);
+	background-repeat: no-repeat;
+	border:0px;	
+	width:194px;
+	height:42px;
+	cursor:pointer;
+}
+
+.tdBottom
+{
+	background-image: url(../images/login/login_lowerlogo.jpg);
+	background-repeat: no-repeat;	
+	width:984px;
+	height:420px;
+}
+
+.footerText
+{
+	color:#e23014;
+	font-size:12px;
+	font-weight:bold;
+	font-family: Tahoma;	
+}
+
+.textBox
+{
+	color:#000000;
+	font-size:12px;
+	font-family: Tahoma;	
+	width:200px;
+	height:18px;
+	border:0;
+}
+
+.textBoxRegister
+{
+	background-image: url(../images/login/texboxRegister.png);
+	background-repeat: no-repeat;	
+	width:219px;
+	height:30px;
+	border:0px;
+	padding: 12px 0 0 5px;
+	font-size:14px;
+	text-align:center;
+}
+
+.signUp
+{
+	color:#000000;
+	font-size:40px;
+	font-family: Tahoma;
+	font-weight:bold;	
+}
+
+.signUptext
+{
+	color:#000000;
+	font-size:14px;
+	font-family: Tahoma;
+	font-weight:bold;
+}
+
+.ddlLobRegister
+{
+	background-image: url(../images/login/texboxRegister.png);
+	background-repeat: no-repeat;	
+	width:219px;
+	height:42px;
+	border:0px;
+	padding: 12px 0 0 5px;
+	font-size:14px;
+	text-align:center;
+}

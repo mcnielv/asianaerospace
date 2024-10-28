@@ -1,0 +1,245 @@
+﻿@model AAC.Web.Model.Registration.RegistrationViewModel
+@{
+    ViewBag.Title = "Asian Aerospace Flight Scheduling & Monitoring System | Manage Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table style="width:95%;" border="0" align="center" cellpadding="0" cellspacing="1">
+    <tr>
+        <!-- LEFT GRID-->
+        <td width="48%" valign="top" class="">
+            <div id="grid_container">
+                <table id="jqTable" class="scroll"></table>
+                <div id="jqTablePager" />
+            </div>
+        </td>
+        <td valign="top" class="style1"></td>
+        <td width="50%" valign="top">
+            <div class="panel-group" style="width:100%; margin-left:10px; margin-right: 10px;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="font-weight:bolder; font-size:12px;">Aircraft Registration Details</div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Name :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtName" name="txtName" class="form-control" style="width:410px;" />
+                                    <input type="text" value="" id="txtRegistrationID" name="txtRegistrationID" style="display:none;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Aircraft :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <select class="form-control" id="ddlAircrafts" style="width:200px;">
+                                        <option value="0">Select</option>
+                                        @if ( Model.Aircrafts != null )
+                                        {
+                                            foreach ( var ac in Model.Aircrafts )
+                                            {
+                                                <option value="@ac.ID">@ac.Name</option>
+                                            }
+
+                                        }
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Description :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <textarea style="height:129px;width:410px;" id="txtDescription" class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-pull-5">
+                                    <div align="left">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input type="button" value="" id="btnSave" class="btnSave" />
+                                        &nbsp;
+                                        <input type="button" value="" id="btnDelete" class="btnDelete" style="display:none;" />
+                                        &nbsp;
+                                        <input type="button" value="" id="btnCancel" class="btnCancel" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+@section scripts{
+@Scripts.Render( "~/bundles/jquerymigrate" )
+@Scripts.Render( "~/bundles/jquery-grid" )
+    <script src="@Url.Content("~/Scripts/Common.js")"></script>
+    <script>
+        //$(document).ready(function () {
+            $('#txtRegistrationID').val('0');
+            var jqDataUrl = "@Url.Action("LoadjqData", "Registration" )";
+            // Set up the jquery grid
+            $("#jqTable").jqGrid({
+                // Ajax related configurations
+                url: jqDataUrl,
+                datatype: "json",
+                mtype: "POST",
+
+                // Specify the column names
+                colNames: ["ID", "Aircraft","Registration #", "Description"],
+                // Configure the columns
+                colModel: [
+                    { name: "ID", index: "ID", width: 5, align: "left", hidden: true },
+                    { name: "AircraftName", index: "AircraftName", width: 15, align: "center" },
+                    { name: "Name", index: "Name", width: 15, align: "center" },
+                    { name: "Description", index: "Decription", width: 35, align: "center" }
+                ],
+                // Grid total width and height
+                width: 600,
+                //height: 500,
+                // Paging
+                toppager: true,
+                pager: $("#jqTablePager"),
+                rowNum: 20,
+                rowList: [5, 10, 20],
+                viewrecords: true, // Specify if "total number of records" is displayed
+                // Default sorting
+                sortname: "Name", //Column name of entity to be sort
+                sortorder: "asc",
+                // Grid caption
+                caption: "Aircraft Registration List",
+                //OnSelect Row
+                onSelectRow: function (id) {
+                    $('#txtRegistrationID').val(id);
+                    $.post('@Url.Action("LoadDetails", "Registration" )', { id: id }, function (data) {
+                        //show data in textbox
+                        $('#txtName').val(data.Name);
+                        $('#txtDescription').val(data.Description);
+                        $('#txtRegistrationID').val(data.ID);
+                        $('#ddlAircrafts').val(data.AircraftID);
+                        $('#btnDelete').show();
+                    }, 'json');
+                }
+            }).navGrid("#jqTablePager",
+                    {
+                        refresh: true,
+                        add: false,
+                        edit: false,
+                        del: false,
+                        search: true,
+                        refreshtext: "Refresh",
+                        searchtext: "Search"
+                    },
+                    {}, // settings for edit
+                    {}, // settings for add
+                    {}, // settings for delete
+                    {
+                        sopt: ["eq"],
+                        caption: "Search...",
+                        Find: "Search",
+                        closeAfterSearch: true
+                    } // Search options. Some options can be set on column level
+                );
+
+            $('#btnCancel').click(function () { ClearData() });
+            $('#btnDelete').click(function () {
+                $.confirm({
+                    closeIcon: true,
+                    title: 'AAC Data Monitoring',
+                    content: 'Delete aircraft registration?',
+                    confirmButton: 'Yes',
+                    cancelButton: 'No',
+                    confirm: function () {
+                        var id = $('#txtRegistrationID').val();
+                        $.post('@Url.Action("Delete","Registration")', {"id": id}, function (data) {
+                            $("#jqTable").trigger("reloadGrid");
+                            ClearData();
+                            $.alert({
+                                closeIcon: true,
+                                title: 'AAC Data Monitoring',
+                                content: data.Message
+                            });
+                        }, 'json');
+                    }
+                });
+            });
+            $('#btnSave').click(function () {
+                var name = $.trim($('#txtName').val());
+                var desc = $.trim($('#txtDescription').val());
+                var acID = $('#ddlAircrafts').val();
+                var msg = '';
+                if (name == '') { msg += 'Aircraft registration is required. <br />' };
+                if (acID == '0') { msg += 'Aircraft is required. <br />' };
+
+                if (msg == '') {
+                    
+                    var question = "";
+                    if ($('#txtRegistrationID').val() == '0') { question = 'Do you want to add new aircraft registration?' }
+                    else { question = 'Do you want to update aircraft registration?' }
+
+                    $.confirm({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: question,
+                        cancelButton: 'No',
+                        confirmButton: 'Yes',
+                        confirm: function () {
+                            if ($('#txtRegistrationID').val() == '0') {
+                                var ac = {
+                                    Name: name,
+                                    Description: desc,
+                                    AircraftID: acID
+                                };
+                                //add
+                                $.post('@Url.Action( "Create", "Registration")', ac, function (data) {
+                                    $("#jqTable").trigger("reloadGrid");
+                                    ClearData();
+                                    $.alert({
+                                        closeIcon: true,
+                                        title: 'AAC Data Monitoring',
+                                        content: data.Message
+                                    });
+                                }, 'json');
+                            } else {
+                                //edit
+                                var id = $('#txtRegistrationID').val();
+                                var ac =
+                                {
+                                    ID: id,
+                                    Name: name,
+                                    Description: desc,
+                                    AircraftID: acID
+                                };
+                                $.post('@Url.Action("Update","Registration")', { "model": ac }, function (data) {
+                                    var dataMsg = data.Message;
+                                    $("#jqTable").trigger("reloadGrid");
+                                    ClearData();
+                                    $.alert({
+                                        closeIcon: true,
+                                        title: 'AAC Data Monitoring',
+                                        content: dataMsg
+                                    });
+                                }, 'json');
+                            }
+                        }
+                    });
+                }
+                else {
+                    $.alert({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: msg
+                    });
+                }
+            });
+            function ClearData() {
+                $('#txtName').val('');
+                $('#txtDescription').val('');
+                $('#txtRegistrationID').val('0');
+                $('#ddlAircrafts').val('0')
+                $('#btnDelete').hide();
+            }
+        //});
+    </script>
+}

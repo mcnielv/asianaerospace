@@ -1,0 +1,5 @@
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Data\bin\Release\AAC.Data.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Data\bin\Release\AAC.Data.pdb
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Data\obj\Release\AAC.Data.csprojResolveAssemblyReference.cache
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Data\obj\Release\AAC.Data.dll
+F:\_WORKING\SIDELINE\Jansen Concepcion\AACSolution\AAC.Data\obj\Release\AAC.Data.pdb

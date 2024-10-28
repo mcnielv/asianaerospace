@@ -1,0 +1,108 @@
+﻿/*BLACK*/
+.fontBlack12px
+{
+	color: Black;
+	font-family:Arial;
+	font-size:12px;	
+}
+
+.fontBlack12pxBold
+{
+	color: Black;
+	font-family:Arial;
+	font-size:12px;	
+	font-weight:bold;
+}
+
+.fontBlack14px
+{
+	color: Black;
+	font-family:Arial;
+	font-size:14px;	
+}
+
+.fontBlack14pxBold
+{
+	color: Black;
+	font-family:Arial;
+	font-size:14px;	
+	font-weight:bold;
+}
+
+.fontBlack16px
+{
+	color: Black;
+	font-family:Arial;
+	font-size:16px;	
+}
+
+.fontBlack16pxBold
+{
+	color: Black;
+	font-family:Arial;
+	font-size:16px;	
+	font-weight:bold;
+}
+
+/*BLUE*/
+.fontBlue12px
+{
+	color: #040966;
+	font-family:Arial;
+	font-size:12px;	
+}
+
+.fontBlue12pxBold
+{
+	color: #040966;
+	font-family:Arial;
+	font-size:12px;	
+	font-weight:bold;
+}
+
+.fontBlue14px
+{
+	color: #040966;
+	font-family:Arial;
+	font-size:14px;	
+}
+
+.fontBlue14pxBold
+{
+	color: #040966;
+	font-family:Arial;
+	font-size:14px;	
+	font-weight:bold;
+}
+
+/*RED*/
+.fontRed12px
+{
+	color: #ba0c08;
+	font-family:Arial;
+	font-size:12px;	
+}
+
+.fontRed12pxBold
+{
+	color: #ba0c08;
+	font-family:Arial;
+	font-size:12px;	
+	font-weight:bold;
+}
+
+/*Green - 0b5401*/
+.fontGreen12px
+{
+	color: #0b5401;
+	font-family:Arial;
+	font-size:12px;	
+}
+
+.fontGreen12pxBold
+{
+	color: #0b5401;
+	font-family:Arial;
+	font-size:12px;	
+	font-weight:bold;
+}

@@ -1,0 +1,323 @@
+﻿@model AAC.Web.Model.User.UserViewModel
+
+@{
+    ViewBag.Title = "AAC | Data Monitoring System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table style="width:95%" border="0" align="center" cellpadding="0" cellspacing="1">
+    <tr>
+        <!-- LEFT GRID-->
+        <td width="48%" valign="top" class="">
+            <div id="grid_container">
+                <table id="jqTable" class="scroll"></table>
+                <div id="jqTablePager" />
+            </div>
+        </td>
+        <td valign="top" class="style1"></td>
+        <td width="50%" valign="top">
+            <div class="panel-group" style="width:100%; margin-left:10px; margin-right: 10px;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="font-weight:bolder; font-size:12px;">Profile Details</div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">User Name :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text"  id="txtUsername" name="txtUsername" class="form-control" style="width:410px;" />
+                                    <input type="text" value="" id="txtUserID" name="txtUserID" style="display:none;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Roles :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <select class="form-control" id="ddlRoles" style="width:200px;">
+                                        <option value="0">Select</option>
+                                        @if ( Model.RoleViewModels != null )
+                                        {
+                                            foreach ( var role in Model.RoleViewModels )
+                                            {
+                                                <option value="@role.ID">@role.Name</option>
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">First Name :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtFirstname" name="txtFirstname" class="form-control" style="width:410px;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Middle Name :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtMiddleName" name="txtMiddleName" class="form-control" style="width:410px;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Last Name :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtLastName" name="txtLastName" class="form-control" style="width:410px;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Phone :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtPhone" name="txtPhone" class="form-control" style="width:410px;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-5" style="width:30%;"><span class="txtbold">Email :</span></div>
+                                <div class="col-sm-pull-5">
+                                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" style="width:410px;" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:5px; margin-bottom:5px;">
+                                <div class="col-sm-pull-5">
+                                    <div align="left">&nbsp;&nbsp;&nbsp;
+                                        <input type="button" value="" id="btnSave" class="btnSave" />
+                                        &nbsp;
+                                        <input type="button" value="" id="btnReset" class="btnResetPassword" style="display:none;" />
+                                        &nbsp;
+                                        <input type="button" value="" id="btnDelete" class="btnDelete" style="display:none;" />
+                                        &nbsp;
+                                        <input type="button" value="" id="btnCancel" class="btnCancel" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+@section scripts{
+@Scripts.Render( "~/bundles/jquerymigrate" )
+@Scripts.Render( "~/bundles/jquery-grid" )
+    <script src="@Url.Content("~/Scripts/Common.js")"></script>
+    <script>
+        $(document).ready(function () {
+            //$('#grid_container div:not(.ui-jqgrid-titlebar)').width("100%");
+            //$('.ui-jqgrid .ui-jqgrid-bdiv').css({ 'overflow-y': 'scroll' });
+            $('#txtUserID').val('0');
+            var jqDataUrl = "@Url.Action("LoadjqData", "UserManagement" )";
+            // Set up the jquery grid
+            $("#jqTable").jqGrid({
+                // Ajax related configurations
+                url: jqDataUrl,
+                datatype: "json",
+                mtype: "POST",
+
+                // Specify the column names
+                colNames: ["ID", "Access", "Username", "First Name", "Middle Name", "Last Name", "Status"],
+                // Configure the columns
+                colModel: [
+                    { name: "ID", index: "ID", width: 5, align: "left", hidden: true },
+                    { name: "RoleName", index: "RoleName", width: 10, align: "center" },
+                    { name: "Username", index: "Username", width: 10, align: "center" },
+                    { name: "FirstName", index: "FirstName", width: 10, align: "center" },
+                        { name: "MiddleName", index: "MiddleName", width: 10, align: "center" },
+                    { name: "LastName", index: "LastName", width: 10, align: "center" },
+                    { name: "Status", index: "Status", width: 10, align: "center" }
+                ],
+                // Grid total width and height
+                width: 600,
+                //height: 500,
+                // Paging
+                toppager: true,
+                pager: $("#jqTablePager"),
+                rowNum: 20,
+                rowList: [5, 10, 20],
+                viewrecords: true, // Specify if "total number of records" is displayed
+                // Default sorting
+                sortname: "Username", //Column name of entity to be sort
+                sortorder: "asc",
+                // Grid caption
+                caption: "Profile List",
+                //OnSelect Row
+                onSelectRow: function (id) {
+                    $('#txtUserID').val(id);
+                    $.post('@Url.Action("LoadUserDetails", "UserManagement" )', { id: id }, function (data) {
+                        //show data in textbox
+                        $('#txtUsername').val(data.Username);
+                        $('#txtFirstname').val(data.FirstName);
+                        $('#txtLastName').val(data.LastName);
+                        $('#txtMiddleName').val(data.MiddleName);
+                        $('#txtPhone').val(data.Phone);
+                        $('#txtEmail').val(data.Email);
+                        $('#ddlRoles').val(data.RoleID);
+
+                        $('#btnDelete').show();
+                        $('#btnReset').show();
+                    }, 'json');
+                }
+            }).navGrid("#jqTablePager",
+                    {
+                        refresh: true,
+                        add: false,
+                        edit: false,
+                        del: false,
+                        search: true,
+                        refreshtext: "Refresh",
+                        searchtext: "Search"
+                    },
+                    {}, // settings for edit
+                    {}, // settings for add
+                    {}, // settings for delete
+                    {
+                        sopt: ["eq"],
+                        caption: "Search...",
+                        Find: "Search",
+                        closeAfterSearch: true
+                    } // Search options. Some options can be set on column level
+                );
+
+            $('#btnCancel').click(function () { ClearData() });
+            $('#btnDelete').click(function () {
+                $.confirm({
+                    closeIcon: true,
+                    title: 'AAC Data Monitoring',
+                    content: 'Delete profile?',
+                    confirmButton: 'Yes',
+                    cancelButton: 'No',
+                    confirm: function () {
+                        var id = $('#txtUserID').val();
+                        $.post('@Url.Action("DeleteUser","UserManagement")', { "id": id }, function (data) {
+                            $("#jqTable").trigger("reloadGrid");
+                            ClearData();
+                            $.alert({
+                                closeIcon: true,
+                                title: 'AAC Data Monitoring',
+                                content: data.Message
+                            });
+                        }, 'json');
+                    }
+                });
+            });
+
+            $('#btnReset').click(function () {
+                $.confirm({
+                    closeIcon: true,
+                    title: 'AAC Data Monitoring',
+                    content: 'Reset password to Password1?',
+                    confirmButton: 'Yes',
+                    cancelButton: 'No',
+                    confirm: function () {
+                        var id = $('#txtUserID').val();
+                        $.post('@Url.Action( "ResetPassword", "UserManagement")', { "id": id }, function (data) {
+                            $("#jqTable").trigger("reloadGrid");
+                            ClearData();
+                            $.alert({
+                                closeIcon: true,
+                                title: 'AAC Data Monitoring',
+                                content: data.Message
+                            });
+                        }, 'json');
+                    }
+                });
+            });
+            $('#btnSave').click(function () {
+                var un = $.trim($('#txtUsername').val());
+                var fn = $.trim($('#txtFirstname').val());
+                var ln = $.trim($('#txtLastName').val());
+                var mi = $.trim($('#txtMiddleName').val());
+                var phone = $.trim($('#txtPhone').val());
+                var email = $.trim($('#txtEmail').val());
+                var roleid = $.trim($('#ddlRoles').val());
+
+                var msg = '';
+                if (un == '') { msg += 'Username is required. <br />' };
+                if (roleid == '0') { msg += 'Please select role. <br />' };
+                if (fn == '') { msg += 'Firstname is required. <br />' };
+                if (ln == '') { msg += 'Lastname is required. <br />' };
+                if (mi == '') { msg += 'Middlename is required. <br />' };
+                if (phone == '') { msg += 'Phone is required. <br />' };
+                if (email == '') { msg += 'Email is required. <br />' }
+                else
+                { if (!common.IsValidEmail(email)) { msg += 'Invalid Email format. <br />' } }
+
+                if (msg == '') {
+                    var userdata = {
+                        Username: un,
+                        RoleID: roleid,
+                        FirstName: fn,
+                        LastName: ln,
+                        MiddleName: mi,
+                        Phone: phone,
+                        email: email
+                    };
+                    var question = "";
+                    if ($('#txtUserID').val() == '0') { question = 'Do you want to add new profile?' }
+                    else { question = 'Do you want to update profile?' }
+
+                    $.confirm({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: question,
+                        cancelButton: 'No',
+                        confirmButton: 'Yes',
+                        confirm: function () {
+                            if ($('#txtUserID').val() == '0') {
+                                //add
+                                $.post('@Url.Action( "CreateNewUser", "UserManagement")', userdata, function (data) {
+                                    $("#jqTable").trigger("reloadGrid");
+                                    ClearData();
+                                    $.alert({
+                                        closeIcon: true,
+                                        title: 'AAC Data Monitoring',
+                                        content: data.Message
+                                    });
+                                }, 'json');
+                            } else {
+                                //edit
+                                var userid = $('#txtUserID').val();
+                                var userview =
+                                {
+                                    ID: userid,
+                                    Username: un,
+                                    FirstName: fn,
+                                    LastName: ln,
+                                    MiddleName: mi,
+                                    RoleID: roleid,
+                                    Email: email
+                                };
+                                $.post('@Url.Action("Update","Profile")', { "model": userview }, function (data) {
+                                    var dataMsg = data.Message;
+                                    $("#jqTable").trigger("reloadGrid");
+                                    ClearData();
+                                    $.alert({
+                                        closeIcon: true,
+                                        title: 'AAC Data Monitoring',
+                                        content: dataMsg
+                                    });
+                                }, 'json');
+                            }
+                        }
+                    });
+                }
+                else {
+                    $.alert({
+                        closeIcon: true,
+                        title: 'AAC Data Monitoring',
+                        content: msg
+                    });
+                }
+            });
+            function ClearData() {
+                $('#txtUsername').val('');
+                $('#txtFirstname').val('');
+                $('#txtLastName').val('');
+                $('#txtMiddleName').val('');
+                $('#txtPhone').val('');
+                $('#txtEmail').val('');
+                $('#ddlRoles').val('0');
+                $('#txtUserID').val('0');
+                $('#btnDelete').hide();
+                $('#btnReset').hide();
+            }
+        });
+    </script>
+}

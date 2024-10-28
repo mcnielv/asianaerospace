@@ -1,0 +1,40 @@
+﻿.iconDocument
+{	
+	width: 38px;
+	height: 34px;
+	background: url(../images/FileManager/Document38x34.png) no-repeat;
+	border:0;
+	cursor:pointer;
+}
+.iconExcel
+{	
+	width: 38px;
+	height: 34px;
+	background: url(../images/FileManager/Excel38x34.png) no-repeat;
+	border:0;
+	cursor:pointer;
+}
+.iconFolder
+{	
+	width: 38px;
+	height: 34px;
+	background: url(../images/FileManager/Folder38x34.png) no-repeat;
+	border:0;
+	cursor:pointer;
+}
+.iconFolderUp
+{	
+	width: 38px;
+	height: 34px;
+	background: url(../images/FileManager/FolderUp38x34.png) no-repeat;
+	border:0;
+	cursor:pointer;
+}
+.iconWord
+{	
+	width: 38px;
+	height: 34px;
+	background: url(../images/FileManager/Word38x34.png) no-repeat;
+	border:0;
+	cursor:pointer;
+}

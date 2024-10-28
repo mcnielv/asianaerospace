@@ -1,0 +1,39 @@
+﻿@model string
+
+@{
+    Layout = null;
+}
+<li><a href="@Url.Action( "Home", "Profile" )">Profile</a></li>
+@if ( ViewBag.RoleID == (int)AAC.Web.Model.Enum.UserRole.Administrator )
+{
+<li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Data Management <b class="caret"></b></a>
+    <ul class="dropdown-menu" id="menu1">
+        <li><a href="@Url.Action( "Index", "FlightDestination" )">Flight Destination Manager</a></li>
+        <li><a href="@Url.Action( "Index", "UserManagement" )">Profile Manager</a></li>
+        <li><a href="@Url.Action( "Index", "AircraftType" )">Aircraft Manager</a></li>
+        <li><a href="@Url.Action( "Index", "Registration" )">Registration Manager</a></li>        
+        @*<li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>*@
+    </ul>
+</li>
+}
+<li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Scheduler <b class="caret"></b></a>
+    <ul class="dropdown-menu" id="menu2">
+        <li><a href="@Url.Action("Calendar","Scheduler")">Manage Schedule</a></li>
+        @if ( ViewBag.RoleID == (int)AAC.Web.Model.Enum.UserRole.Administrator )
+        {
+            <li><a href="@Url.Action( "Delete", "Scheduler" )">Remove Schedule</a></li>
+        }
+    </ul>
+</li>
+<li class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Reports <b class="caret"></b></a>
+    <ul class="dropdown-menu" id="menu1">
+        <li><a href="@Url.Action( "Schedule", "Reports" )">Schedule</a></li>
+        <li><a href="@Url.Action( "Logs", "Reports" )">Logs</a></li>
+    </ul>
+</li>

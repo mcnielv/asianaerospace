@@ -1,0 +1,142 @@
+﻿.btnPostNew
+{
+	height: 35px;
+	width: 82px;
+	background: url(../images/Forums/POSTNew.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.btnPostNewComment
+{
+	height: 35px;
+	width: 82px;
+	background: url(../images/Forums/POSTNewComment.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.commentActive
+{
+	height: 48px;
+	width: 48px;
+	background: url(../images/Forums/FORUM_NEW.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.commentInActive
+{
+	height: 48px;
+	width: 48px;
+	background: url(../images/Forums/FORUM_OLD.png) no-repeat;
+	border:0;
+	cursor:pointer
+}
+.replyLink
+{
+	font-family:Verdana;
+	font-size:11px;
+	font-weight:700;
+	color:#062b5e;		
+}
+.lblUsername
+{
+	font-family:Verdana;
+	font-size:14px;
+	font-weight:700;
+	color:#062b5e;	
+}
+.lblDateValue
+{
+	font-family:Verdana;
+	font-size:11px;
+	color: Red;
+	font-style:italic;
+}
+.lblCommentNum
+{
+	font-family:Verdana;
+	font-size:11px;
+	color: #062b5e;
+}
+.tdDetails
+{
+	background-color:#dce8fa;
+	width:20%; 
+	vertical-align:top;	
+}
+.tdDetailsForum
+{
+	background-color:#dce8fa;
+	width:40%; 
+	vertical-align:top;	
+}
+.tdForum
+{
+	background-color:#dce8fa;
+	width:60%; 
+	vertical-align:top;	
+}
+.tdComment
+{
+	background-color:#f3f6fb;
+	vertical-align: top;
+	font-family:Verdana;
+	font-size: 12px;	
+}
+.tdViews
+{
+	background-color:#dedfde;
+	vertical-align: top;
+	font-family:Verdana;
+	font-size: 11px;	
+}
+.tdReplies
+{
+	background-color:#ededed;
+	vertical-align: top;
+	font-family:Verdana;
+	font-size: 11px;
+}
+/***********************************************/
+.bbcode_container {
+margin: 20px;
+margin-top: 5px;
+display: block;
+}
+
+.bbcode_container div.bbcode_quote {
+margin: 0 10px;
+margin-bottom: 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+background: #f2f6f8 none;
+border-radius: 5px;
+border: 1px solid #417394;
+font: italic normal 13px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+position: relative;
+top: 0;
+}
+.bbcode_quote div.quote_container {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+padding: 5px 10px 5px 10px;
+}
+/*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 12px;
+background: transparent;
+text-decoration: none;
+}*/
+.bbcode_container .bbcode_quote_container {
+background: transparent url(../images/quote-left.png) no-repeat left;
+display: block;
+width: 9px;
+height: 13px;
+position: absolute;
+top: 5;
+left: -9px;
+}
+/****/

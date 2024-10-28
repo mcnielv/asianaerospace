@@ -1,0 +1,91 @@
+﻿@model AAC.Web.Model.User.UserViewModel
+@{
+    ViewBag.Title = "Asian Aerospace Flight Scheduling & Monitoring System | Logs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel-group" style="width:90%; float:none; margin-left:auto; margin-right: auto;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="font-weight:bolder; font-size:12px;">Profile Information</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div id="grid_container">
+                    <table id="jqTable" class="scroll"></table>
+                    <div id="jqTablePager" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{@Scripts.Render( "~/bundles/jquerymigrate" )
+@Scripts.Render( "~/bundles/jquery-grid" )
+<script src="@Url.Content("~/Scripts/Common.js")"></script>
+    <script>
+      
+            var jqDataUrl = "@Url.Action( "LoadLogs", "Reports" )";
+            // Set up the jquery grid
+            $("#jqTable").jqGrid({
+                // Ajax related configurations
+                url: jqDataUrl,
+                datatype: "json",
+                mtype: "POST",
+                
+                // Specify the column names
+                colNames: ["ID", "Action Type", "Description", "Modified By", "Date Modified"],
+                // Configure the columns
+                colModel: [
+                    { name: "ID", index: "ID", width: 5, align: "left", hidden: true },
+                    { name: "ActionType", index: "ActionType", width: 20, align: "center" },
+                    { name: "Description", index: "Name", width: 40, align: "center" },
+                    { name: "ModifiedBy", index: "Decription", width: 20, align: "center" },
+                    { name: "DateModified", index: "DateModified", width: 15, align: "center" }
+                ],
+                // Grid total width and height
+                width: 1180,
+                height: 500,
+                // Paging
+                toppager: true,
+                pager: $("#jqTablePager"),
+                rowNum: 100,
+                rowList: [5, 10, 20],
+                viewrecords: true, // Specify if "total number of records" is displayed
+                // Default sorting
+                sortname: "DateModified", //Column name of entity to be sort
+                sortorder: "asc",
+                // Grid caption
+                caption: "Logs",
+                //OnSelect Row
+                onSelectRow: function (id) {
+                    $('#txtAircraftID').val(id);
+                    $.post('@Url.Action("LoadDetails", "FlightDestination" )', { id: id }, function (data) {
+                        //show data in textbox
+                        $('#txtName').val(data.Name);
+                        $('#txtDescription').val(data.Description);
+                        $('#txtAircraftID').val(data.ID);
+
+                        $('#btnDelete').show();
+                    }, 'json');
+                }
+            }).navGrid("#jqTablePager",
+                    {
+                        refresh: true,
+                        add: false,
+                        edit: false,
+                        del: false,
+                        search: true,
+                        refreshtext: "Refresh",
+                        searchtext: "Search"
+                    },
+                    {}, // settings for edit
+                    {}, // settings for add
+                    {}, // settings for delete
+                    {
+                        sopt: ["eq"],
+                        caption: "Search...",
+                        Find: "Search",
+                        closeAfterSearch: true
+                    } // Search options. Some options can be set on column level
+                );
+
+    </script>
+}
